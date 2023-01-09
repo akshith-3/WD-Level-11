@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        h3{text-align: center;}
+    </style>
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <div class="my-6 mx-10">
+        <h3 class="text-4xl my-4 font-semibold ">Hi <%= userName %>!</h3>
+        <br>
+        <h5 class="text-1xl my-4 text-center">Want to create own election--Try below</h5>
+        <div class="grid grid-cols-7">
+            <div class="col-start-4 col-span-1">
+        <div class="bg-black rounded px-2 py-1 text-center">
+            <a href="/electionpage/addelection" class="text-white">Create new election</a>
+        </div>
+    </div>
+    </div>
+        <div class="flex gap-2 py-4 justify-between">
+            <h5 class="text-2xl">Elections: <span class="bg-gray-100 ml-2 px-2"><%= noOfElections %></span></h5>    
+        </div>
+        <div class="flex-auto">
+            <div class="mx-4">
+                <p class="text-black"><%= (listOfElections.length==0)?"You don't have elections yet!":"" %></p>
+                <ol class="list-decimal">
+                    <% for (let i=0; i<listOfElections.length; i++) { %>
+                        <li>
+                            <div class="flex items-center w-fit my-2 px-2 py-1 ">
+                                <a href="/electionpage/<%= listOfElections[i].id %>" class="m-2 text-sm text-black "><%= listOfElections[i].electionName %></a>
+                            </div>
+                        </li>
+                    <% } %>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
